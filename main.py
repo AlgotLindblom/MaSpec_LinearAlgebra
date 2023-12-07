@@ -2,15 +2,15 @@ import numpy as np
 
 def makeArray():
     '''Creates a NumPy ndarray identical to one written in config.txt'''
-    # Open text file for reading user input. Input is seperated by whitespace " ".
+    # Öppna text fil config.txt för användarinput..
     with open('config.txt') as f:
         lines = f.readlines()
         f.close()
 
     for i in range(lines.__len__()):
         if '\n' in lines[i]: 
-            lines[i].replace('\n', '') # Remove all \n characters 
-        lines[i] = lines[i].split() # Split numbers at whitespace seperator.
+            lines[i].replace('\n', '') # Ta bort alla \n characters 
+        lines[i] = lines[i].split() # Dela nummer vid mellanslag seperator.
     
     setToRemove = []
     for i in lines:
@@ -20,7 +20,7 @@ def makeArray():
     for i in setToRemove:
         lines.remove(i)
 
-    M = np.ndarray(shape=(lines.__len__(), lines[0].__len__()), dtype="float") # Create ndarray from dimensions of txt document.
+    M = np.ndarray(shape=(lines.__len__(), lines[0].__len__()), dtype="float") # Skapa ndarray från dimensioner av txt dokument.
 
     for i in range(lines.__len__()):
         for e in range(lines[i].__len__()):
@@ -43,9 +43,9 @@ def matriceDet(M):
         print("ERROR: Invalid input. Input matrix M must be square.")
         return 
     if M.shape == (2, 2):
-        return M[0][0 ] * M[1][1] - M[0][1] * M[1][0]
+        return M[0][0 ] * M[1][1] - M[0][1] * M[1][0]   #EKvation (2) i loggbok
     if M.shape == (3, 3):
-        return (M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) +  M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]))
+        return (M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) +  M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0])) #Ekvation (4) i loggobk
     print(f"Matrix must be either 2x2 or 3x3. Your matrix has shape {M.shape[0]}x{M.shape[1]}.")
 
 def multiply(A, B):
