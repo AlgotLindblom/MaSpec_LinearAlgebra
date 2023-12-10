@@ -48,14 +48,6 @@ def matriceDet(M):
         return (M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) +  M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0])) #Ekvation (4) i loggobk
     print(f"Matrix must be either 2x2 or 3x3. Your matrix has shape {M.shape[0]}x{M.shape[1]}.")
 
-def multiply(A, B):
-    if (A.shape[1] != B.shape[0]):
-        print(f"ERROR: Invalid input. Input matrices A and B must match. {A.shape[1]} must equal {B.shape[0]}.")
-        return
-    M = np.ndarray(A.shape[0], B.shape[1])
-    M = A * B
-    #WIP
-
 if __name__ == "__main__":
     M = makeArray()
     print(matriceDet(M))
